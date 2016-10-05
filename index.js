@@ -22,7 +22,7 @@ exports.config = (p) => {
   var dynDB   = Promise.promisifyAll(new aws.DynamoDB.DocumentClient());
   var params = {
     TableName: p.tableName,
-    Key: { stage: p.configName }
+    Key: { configName: p.configName }
   };
 
   return dynDB.getAsync(params)
