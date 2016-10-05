@@ -16,7 +16,7 @@ So the code is quite simple and returns a promise containing the the config obje
 from the dynamodb table in question.
 
 ```javascript
-var cf = require('aws-lambda-config');
+var cf = require('aws-cfg');
 
 cf.config({
   configName: '$LATEST:someConfig',
