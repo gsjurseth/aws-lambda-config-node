@@ -11,7 +11,7 @@ When using AWS Lambdas you have a problem of dealing with multiple accounts and 
     You use something like this. 
    
 
-## Grab some config
+## Grab a single config
 So the code is quite simple and returns a promise containing the the config object retrieved 
 from the dynamodb table in question.
 
@@ -31,6 +31,36 @@ cf.config({
 
 This returns the "config" element from the 'sharedConfigTable' table where the configName field
 (the primary key) is equal to "$LATEST:someConfig"
+
+
+## Grab a single config
+Sometimes you want to grab multiple configurations and leave them sorted by their respective configNames.
+Consider the following:
+
+```javascript
+cf.setDefaults({
+  tableName: 'CCOConfiguration',
+  region: 'eu-west-1',
+  debug: false
+});
+
+cf.mergeConfigs([
+  '$LATEST:firstProject',
+  '$LATEST:secondProject',
+  {
+    configName: '$LATEST:third',
+    tableName: 'AnotherConfigTable',
+    region: 'eu-west-1',
+    debug: false
+  }
+])
+.then(function(d) {
+  console.log('This is the d: %j', d);
+})
+```
+
+This will like above fetch them all, but will return as a single hash where each configNames points to its
+own "config" hash.
 
 ## Table setup
 Simply a two column dynamodb table:
