@@ -33,13 +33,13 @@ This returns the "config" element from the 'sharedConfigTable' table where the c
 (the primary key) is equal to "$LATEST:someConfig"
 
 
-## Grab a single config
+## Grab multiple configs
 Sometimes you want to grab multiple configurations and leave them sorted by their respective configNames.
 Consider the following:
 
 ```javascript
 cf.setDefaults({
-  tableName: 'CCOConfiguration',
+  tableName: 'sharedConfigTable',
   region: 'eu-west-1',
   debug: false
 });
@@ -48,8 +48,8 @@ cf.mergeConfigs([
   '$LATEST:firstProject',
   '$LATEST:secondProject',
   {
-    configName: '$LATEST:third',
-    tableName: 'AnotherConfigTable',
+    configName: '$LATEST:third-private',
+    tableName: 'PrivateConfigTable',
     region: 'eu-west-1',
     debug: false
   }
