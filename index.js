@@ -1,5 +1,6 @@
+'use strict';
 const
-  Promise   = require('bluebird'),
+  Promie   = require('bluebird'),
   _         = require('lodash'),
   aws       = require('aws-sdk');
 
@@ -65,7 +66,7 @@ exports.setDefaults = o => {
 }
 
 exports.config = p => {
-  debug = false;
+  let debug = false;
   if ( _.has(p, 'debug') ) {
     if (p.debug) {
       debug = true;

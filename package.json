@@ -1,6 +1,6 @@
 {
   "name": "aws-cfg",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Allows a user to store AWS-runtim specific configuration per lambda function in known dynamodb table",
   "main": "index.js",
   "scripts": {
