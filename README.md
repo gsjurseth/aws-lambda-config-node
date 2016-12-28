@@ -59,6 +59,10 @@ cf.mergeConfigs([
 })
 ```
 
+Here we've called mergeConfigs instead of the single config function. This will iterate over the list sent to it.
+Here i've sent both strings (the configName) and an object to merge configs. If you send a string then you must
+have called setDefaults prior. Otherwise you simply send an object that contains at least configName and tableName.
+
 This will like above fetch them all, but will return as a single hash where each configNames points to its
 own "config" hash.
 
