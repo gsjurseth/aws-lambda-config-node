@@ -1,6 +1,6 @@
 'use strict';
 const
-  Promie   = require('bluebird'),
+  Promise   = require('bluebird'),
   _         = require('lodash'),
   aws       = require('aws-sdk');
 
@@ -19,7 +19,7 @@ exports.parseArgs = list => {
         _cf.push({
           configName: i,
           tableName: self.defaults.tableName,
-          region: self.defaults.region ? self.defaults.region : 'eu-west-1',
+          region: self.defaults.region ? self.defaults.region : aws.config.region,
           debug: self.defaults.debug ? self.defaults.debug : false
         });
       }
@@ -33,7 +33,7 @@ exports.parseArgs = list => {
           _cf.push({
             configName: i.configName,
             tableName: self.defaults.tableName,
-            region: self.defaults.region ? self.defaults.region : 'eu-west-1',
+            region: self.defaults.region ? self.defaults.region : aws.config.region,
             debug: self.defaults.debug ? self.defaults.debug : false
           });
         }
